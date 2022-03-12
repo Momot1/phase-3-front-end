@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
 
 function App() {
+  const [messages, setMessages] = useState("")
+
+  useEffect(() => {
+    fetch('http://localhost:9292')
+    .then(resp => resp.json())
+    .then(data => setMessages(data.message))
+    .catch(error => console.log(error))
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{messages}</h1>
+      <h2>hello</h2>
     </div>
   );
 }
 
 export default App;
+
+
+// Cars you own and keep track of rapairs and maintenance you've done
