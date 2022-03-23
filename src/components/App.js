@@ -18,11 +18,11 @@ function App() {
     <BrowserRouter>
       <NavBar 
         userData={userData} 
-        onLogout={() => setUserData({...userData, isLoggedIn: false})}
+        onLogout={() => setUserData({isLoggedIn: false})}
       />
       
       <Switch>
-        <Route exact path="/"><Home /></Route>
+        <Route exact path="/"><Home userData={userData}/></Route>
         <Route path="/login"><Login /></Route>
         <Route path="/signup"><Signup /></Route>
         <Route path="/cars/new"><NewCar /></Route>

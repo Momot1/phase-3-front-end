@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Car from "./Car"
 import { useHistory } from "react-router-dom"
 
-function Home() {
+function Home({userData}) {
     const [cars, setCars] = useState([])
 
     const history = useHistory()
