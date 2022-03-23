@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { BrowserRouter, Routes , Route } from "react-router-dom"
+import { BrowserRouter, Switch , Route } from "react-router-dom"
 import NavBar from "./NavBar"
 import Home from "./Home"
 
@@ -10,9 +10,11 @@ function App() {
     <BrowserRouter>
       <NavBar userData={userData} onLogout={() => setUserData({...userData, isLoggedIn: false})} />
       
-      <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-      </Routes>
+      <Switch>
+        <Route exact path="/"><Home /></Route>
+
+        <Route path= "/"><h1>404 NOT FOUND</h1></Route>
+      </Switch>
     </BrowserRouter>
   )
 }
