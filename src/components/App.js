@@ -9,12 +9,17 @@ import NewRepair from "./NewRepair";
 import NewCarOwner from "./NewCarOwner";
 import UserInfo from "./UserInfo";
 
+
 function App() {
   const [userData, setUserData] = useState({isLoggedIn: false})
 
+
   return (
     <BrowserRouter>
-      <NavBar userData={userData} onLogout={() => setUserData({...userData, isLoggedIn: false})} />
+      <NavBar 
+        userData={userData} 
+        onLogout={() => setUserData({...userData, isLoggedIn: false})}
+      />
       
       <Switch>
         <Route exact path="/"><Home /></Route>

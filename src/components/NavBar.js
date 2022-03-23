@@ -1,11 +1,14 @@
-function NavBar({onLogout, userData}){
-    console.log(userData)
+import { Link } from "react-router-dom";
 
-    if(userData.isLoggedIn){
-        return (<button onClick={onLogout}>Logout</button>)
-    } else{
-        return (<button onClick={onLogout}>Login</button>)
-    }
+function NavBar({onLogout, userData}){
+    
+    return (
+        <div>
+            <Link to="/">Home</Link>
+            <Link to="/cars/new">New Car</Link>
+            {userData.isLoggedIn ? <button onClick={onLogout}>Logout</button> : <button>Login</button>}
+        </div>
+    )
 }
 
 export default NavBar;
