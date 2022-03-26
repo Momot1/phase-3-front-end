@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
 
-function Login(){
+function Login({ onLogin }){
     const [formData, setFormData] = useState({
         username: "",
         password: ""
@@ -22,7 +22,11 @@ function Login(){
             body: JSON.stringify(formData)
         })
         .then(resp => resp.json())
-        .then(loggedIn => console.log(loggedIn))
+        .then(loggedIn => {
+            if(loggedIn.logged_in){
+                onLogin(loggedIn)
+            }
+        })
     }
 
     return (

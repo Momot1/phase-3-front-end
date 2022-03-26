@@ -11,24 +11,30 @@ import UserInfo from "./UserInfo";
 
 
 function App() {
-  const [userData, setUserData] = useState({isLoggedIn: false})
+  const [userData, setUserData] = useState({logged_in: false})
+
+  function updateUserData(userInfo){
+    setUserData(userInfo)
+  }
+
+  console.log(userData)
 
 
   return (
     <BrowserRouter>
       <NavBar 
         userData={userData} 
-        onLogout={() => setUserData({isLoggedIn: false})}
+        onLogout={() => setUserData({logged_in: false})}
       />
       
       <Switch>
         <Route exact path="/"><Home userData={userData}/></Route>
-        <Route path="/login"><Login /></Route>
+        <Route path="/login"><Login onLogin={updateUserData}/></Route>
         <Route path="/signup"><Signup /></Route>
         <Route path="/cars/new"><NewCar /></Route>
         <Route path="/cars/:id/repairs/new"><NewRepair /></Route>
         <Route path="/cars/:id/owner/new"><NewCarOwner /></Route>
-        <Route path="/:username/about"><UserInfo /></Route>
+        <Route path="/users/:id/about"><UserInfo /></Route>
         <Route path= "/"><h1>404 NOT FOUND</h1></Route>
       </Switch>
     </BrowserRouter>

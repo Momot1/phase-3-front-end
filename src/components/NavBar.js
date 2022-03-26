@@ -6,7 +6,8 @@ function NavBar({onLogout, userData}){
         <div>
             <Link to="/">Home</Link>
             <Link to="/cars/new">New Car</Link>
-            {userData.isLoggedIn ? <button onClick={onLogout}>Logout</button> : <Link to="/login">Login</Link>}
+            {userData.logged_in ? <button onClick={onLogout}>Logout</button> : <Link to="/login">Login</Link>}
+            {userData.logged_in ? <Link to={`/users/${userData.id}/about`}>My Profile</Link> : null}
         </div>
     )
 }
